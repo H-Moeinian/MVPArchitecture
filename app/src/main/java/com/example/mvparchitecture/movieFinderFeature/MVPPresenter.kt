@@ -2,20 +2,16 @@ package com.example.mvparchitecture.movieFinderFeature
 
 import com.example.mvparchitecture.MovieDatabase.Search
 
-class MVPPresenter(val view: MVPViewActivity) {
+class MVPPresenter(val view: MVPContract.MVPView) : MVPContract.MVPPresenter {
     val model = MVPModel(this)
 
-    fun getMovieInformation(movieTitle: String) {
+    override fun getMovieInformation(movieTitle: String) {
         model.fetchRelatedMovies(movieTitle)
     }
 
-    fun movieInformationArrived(list: ArrayList<Search>) {
+    override fun movieInformationArrived(list: ArrayList<Search>) {
         view.showMovieInformation(list)
     }
-
-
-
-
 
 
 }
